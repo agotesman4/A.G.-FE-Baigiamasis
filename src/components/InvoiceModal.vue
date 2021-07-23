@@ -116,9 +116,11 @@
         <!-- MOKEJIMO TERMINAI ir KOKS PRODUKTAS-->
         <div class="input flex flex-column">
           <label for="paymentTerms">Payment Terms</label>
-          <select v-model="paymentTerms" type="text" id="paymentTerms" required
-            ><option value="30">Net 30 Days</option>
-            <option value="60">Net 60 Days</option></select
+          <select v-model="paymentTerms" type="text" id="paymentTerms" required>
+            <option value="7">7 Days</option>
+            <option value="15">15 Days</option>
+            <option value="30">30 Days</option>
+            <option value="60">60 Days</option></select
           >
         </div>
         <div class="input flex flex-column">
@@ -150,10 +152,10 @@
               <td class="qty"><input v-model="item.qty" type="text" /></td>
               <td class="price"><input v-model="item.price" type="text" /></td>
               <td class="total flex">
-                ${{ (item.total = item.qty * item.price) }}
+                {{ (item.total = item.qty * item.price) }} &#8364;
               </td>
               <img
-                @lick="deleteInvoiceItem(item.id)"
+                @click="deleteInvoiceItem(item.id)"
                 src="@/assets/icon-delete.svg"
                 alt="deleteicon"
               />
@@ -184,10 +186,12 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { uid } from "uid";
 export default {
   name: "invoiceModal",
   data() {
     return {
+      dateOptions: { year: "numeric", month: "short", day: "numeric" },
       billerStreetAddress: null,
       billerCity: null,
       billerZipCode: null,
@@ -210,10 +214,46 @@ export default {
       invoiceTotal: 0,
     };
   },
+  //   Skriptas kad gauti esamos dienos data
+  created() {
+    this.invoiceDateUnix = Date.now();
+    this.invoiceDate = new Date(this.invoiceDateUnix).toLocaleDateString(
+      "en-eu",
+      this.dateOptions
+    );
+  },
   methods: {
     ...mapMutations(["TOGGLE_INVOICE"]),
     closeInvoice() {
       this.TOGGLE_INVOICE();
+    },
+
+    addNewInvoiceItem() {
+      this.invoiceItemList.push({
+        id: uid(),
+        itemName: "",
+        qty: "",
+        price: 0,
+        total: 0,
+      });
+    },
+
+    deleteInvoiceItem(id) {
+      this.invoiceItemList = this.invoiceItemList.filter(
+        (item) => item.id !== id
+      );
+    },
+  },
+  // Skriptas kad paskaiciuotu dienas pagal pasirinkta mokejimo opcija
+  watch: {
+    paymentTerms() {
+      const futureDate = new Date();
+      this.paymentDueDateUnix = futureDate.setDate(
+        futureDate.getDate() + parseInt(this.paymentTerms)
+      );
+      this.paymentDueDate = new Date(
+        this.paymentDueDateUnix
+      ).toLocaleDateString("en-eu", this.dateOptions);
     },
   },
 };
@@ -228,6 +268,9 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @media (min-width: 900px) {
     left: 90px;
   }
@@ -243,7 +286,6 @@ export default {
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     h1 {
-      /* POTO PAKEIST MEDIA QUERRY NES UZLENDA H1  */
       margin-bottom: 48px;
       color: white;
     }

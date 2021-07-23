@@ -3,7 +3,9 @@
     <div v-if="!mobile" class="app flex flex-column">
       <Navigation />
       <div class="app-content flex-column">
-        <InvoiceModal v-if="invoiceModal" />
+        <transition name="invoice">
+          <InvoiceModal v-if="invoiceModal" />
+        </transition>
         <router-view />
       </div>
     </div>
@@ -83,6 +85,18 @@ export default {
   p {
     margin-top: 16px;
   }
+}
+
+/* Invoice animacija */
+
+.invoice-enter-active,
+.invoice-leave-active {
+  transition: 0.7s ease all;
+}
+
+.invoice-enter-from,
+.invoice-leave-to {
+  transform: translateX(-700px);
 }
 
 button,
