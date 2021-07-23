@@ -5,6 +5,7 @@
     ref="invoiceWrap"
   >
     <form @submit.prevent="submitForm" class="invoice-content">
+      <Loading v-show="loading" />
       <h1 class="invc">New Invoice</h1>
       <!-- BILL FORMA -->
       <div class="bill-from flex flex-column">
@@ -15,13 +16,22 @@
             v-model="billerStreetAddress"
             type="text"
             id="billerStreetAddress"
+            minlength="5"
+            maxlength="70"
             required
           />
         </div>
         <div class="location-details flex">
           <div class="input flex flex-column">
             <label for="billerCity">City</label>
-            <input v-model="billerCity" type="text" id="billerCity" required />
+            <input
+              v-model="billerCity"
+              type="text"
+              id="billerCity"
+              minlength="5"
+              maxlength="86"
+              required
+            />
           </div>
           <div class="input flex flex-column">
             <label for="billerZipCode">Zip Code</label>
@@ -29,6 +39,8 @@
               v-model="billerZipCode"
               type="text"
               id="billerZipCode"
+              minlength="2"
+              maxlength="20"
               required
             />
           </div>
@@ -38,6 +50,8 @@
               v-model="billerCountry"
               type="text"
               id="billerCountry"
+              minlength="4"
+              maxlength="56"
               required
             />
           </div>
@@ -49,11 +63,25 @@
         <h4>Bill To</h4>
         <div class="input flex flex-column">
           <label for="clientName">Client's Name</label>
-          <input v-model="clientName" type="text" id="clientName" required />
+          <input
+            v-model="clientName"
+            type="text"
+            id="clientName"
+            minlength="3"
+            maxlength="100"
+            required
+          />
         </div>
         <div class="input flex flex-column">
           <label for="clientEmail">Client's Email</label>
-          <input v-model="clientEmail" type="text" id="clientEmail" required />
+          <input
+            v-model="clientEmail"
+            type="email"
+            id="clientEmail"
+            minlength="4"
+            maxlength="70"
+            required
+          />
         </div>
         <div class="input flex flex-column">
           <label for="clientStreetAddress">Street Address</label>
@@ -61,6 +89,8 @@
             v-model="clientStreetAddress"
             type="text"
             id="clientStreetAddress"
+            minlength="4"
+            maxlength="70"
             required
           />
         </div>
@@ -68,7 +98,14 @@
         <div class="location-details flex">
           <div class="input flex flex-column">
             <label for="clientCity">City</label>
-            <input v-model="clientCity" type="text" id="clientCity" required />
+            <input
+              v-model="clientCity"
+              type="text"
+              id="clientCity"
+              minlength="5"
+              maxlength="86"
+              required
+            />
           </div>
           <div class="input flex flex-column">
             <label for="clientZipCode">Zip Code</label>
@@ -76,6 +113,8 @@
               v-model="clientZipCode"
               type="text"
               id="clientZipCode"
+              minlength="2"
+              maxlength="20"
               required
             />
           </div>
@@ -85,6 +124,8 @@
               v-model="clientCountry"
               type="text"
               id="clientCountry"
+              minlength="4"
+              maxlength="56"
               required
             />
           </div>
@@ -171,11 +212,15 @@
       <!--  DELETE/SAVE/EXIT MYGTUKAI-->
       <div class="save flex">
         <div class="left">
-          <button @click="closeInvoice" class="red">Cancel</button>
+          <button @click="closeInvoice" class="red" type="button">
+            Cancel
+          </button>
         </div>
         <div class="right flex">
-          <button @click="saveDraft" class="dark-purple">Save as Draft</button>
-          <button @click="publishInvoice" class="purple">
+          <button @click="saveDraft" class="dark-purple" type="submit">
+            Save as Draft
+          </button>
+          <button @click="publishInvoice" class="purple" type="submit">
             Create Invoice
           </button>
         </div>
@@ -185,6 +230,8 @@
 </template>
 
 <script>
+import db from "../firebase/firebaseInit";
+import Loading from "../components/Loading.vue";
 import { mapMutations } from "vuex";
 import { uid } from "uid";
 export default {
@@ -192,6 +239,7 @@ export default {
   data() {
     return {
       dateOptions: { year: "numeric", month: "short", day: "numeric" },
+      loading: null,
       billerStreetAddress: null,
       billerCity: null,
       billerZipCode: null,
@@ -214,6 +262,9 @@ export default {
       invoiceTotal: 0,
     };
   },
+  components: {
+    Loading,
+  },
   //   Skriptas kad gauti esamos dienos data
   created() {
     this.invoiceDateUnix = Date.now();
@@ -223,7 +274,14 @@ export default {
     );
   },
   methods: {
-    ...mapMutations(["TOGGLE_INVOICE"]),
+    ...mapMutations(["TOGGLE_INVOICE", "TOGGLE_MODAL"]),
+
+    checkClick(e) {
+      if (e.target === this.$refs.invoiceWrap) {
+        this.TOGGLE_MODAL();
+      }
+    },
+
     closeInvoice() {
       this.TOGGLE_INVOICE();
     },
@@ -242,6 +300,66 @@ export default {
       this.invoiceItemList = this.invoiceItemList.filter(
         (item) => item.id !== id
       );
+    },
+
+    calInvoiceTotal() {
+      this.invoiceTotal = 0;
+      this.invoiceItemList.forEach((item) => {
+        this.invoiceTotal += item.total;
+      });
+    },
+
+    publishInvoice() {
+      this.invoicePending = true;
+    },
+
+    saveDraft() {
+      this.invoiceDraft = true;
+    },
+
+    async uploadInvoice() {
+      if (this.invoiceItemList.length <= 0) {
+        alert("Please check if you filled Item list correctly");
+        return;
+      }
+
+      this.loading = true;
+
+      this.calInvoiceTotal();
+
+      const dataBase = db.collection("invoices").doc();
+
+      await dataBase.set({
+        invoiceId: uid(7),
+        billerStreetAddress: this.billerStreetAddress,
+        billerCity: this.billerCity,
+        billerZipCode: this.billerZipCode,
+        billerCountry: this.billerCountry,
+        clientName: this.clientName,
+        clientEmail: this.clientEmail,
+        clientStreetAddress: this.clientStreetAddress,
+        clientCity: this.clientCity,
+        clientZipCode: this.clientZipCode,
+        clientCountry: this.clientCountry,
+        invoiceDate: this.invoiceDate,
+        invoiceDateUnix: this.invoiceDateUnix,
+        paymentTerms: this.paymentTerms,
+        paymentDueDate: this.paymentDueDate,
+        paymentDueDateUnix: this.paymentDueDateUnix,
+        productDescription: this.productDescription,
+        invoiceItemList: this.invoiceItemList,
+        invoiceTotal: this.invoiceTotal,
+        invoicePending: this.invoicePending,
+        invoiceDraft: this.invoiceDraft,
+        invoicePaid: null,
+      });
+
+      this.loading = false;
+      this.TOGGLE_INVOICE();
+    },
+
+    submitForm() {
+      this.uploadInvoice();
     },
   },
   // Skriptas kad paskaiciuotu dienas pagal pasirinkta mokejimo opcija

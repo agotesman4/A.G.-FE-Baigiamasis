@@ -99,6 +99,7 @@ export default {
             cursor: pointer;
             font-size: 12px;
             padding: 10px 20px;
+            border-radius: 10px;
 
             &:hover {
               color: #1c1331;
