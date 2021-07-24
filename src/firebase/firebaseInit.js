@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyB724p0mtZrKe4PSJ8rKY3kAQ8KtEdfhSM",
-  authDomain: "invoice-app-finalas.firebaseapp.com",
-  projectId: "invoice-app-finalas",
-  storageBucket: "invoice-app-finalas.appspot.com",
-  messagingSenderId: "570004278133",
-  appId: "1:570004278133:web:598b39bcffcfcedf06e13c",
+  apiKey: "AIzaSyDpTrtwFe1jRb5ApmEsFv90KIzHoXlFxXY",
+  authDomain: "invoice-app-testas.firebaseapp.com",
+  projectId: "invoice-app-testas",
+  storageBucket: "invoice-app-testas.appspot.com",
+  messagingSenderId: "463459284829",
+  appId: "1:463459284829:web:f63f431428f11875ba9ab4",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

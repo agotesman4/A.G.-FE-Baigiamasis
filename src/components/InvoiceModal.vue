@@ -330,7 +330,7 @@ export default {
       const dataBase = db.collection("invoices").doc();
 
       await dataBase.set({
-        invoiceId: uid(7),
+        invoiceId: uid(6),
         billerStreetAddress: this.billerStreetAddress,
         billerCity: this.billerCity,
         billerZipCode: this.billerZipCode,
