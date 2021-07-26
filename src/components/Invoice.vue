@@ -41,12 +41,12 @@ export default {
 .invoice {
   text-decoration: none;
   cursor: pointer;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 1rem;
+  margin-bottom: 1rem;
   color: white;
-  border-radius: 20px;
-  padding: 28px 32px;
-  background-color: #2a1a42;
+  border-radius: 1.25rem;
+  padding: 1.75rem 2rem;
+  background-color: #325a53;
   align-items: center;
 
   span {
@@ -56,7 +56,7 @@ export default {
   .left {
     align-items: center;
     flex-basis: 60%;
-    gap: 16px;
+    gap: 1rem;
 
     span {
       flex: 1;
@@ -67,13 +67,13 @@ export default {
     }
   }
   .right {
-    gap: 16px;
+    gap: 1rem;
     flex-basis: 40%;
     align-items: center;
 
     .price {
       flex: 1;
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 600px;
     }
   }

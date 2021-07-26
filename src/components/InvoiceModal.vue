@@ -210,7 +210,7 @@
           </div>
         </div>
       </div>
-      <!--  DELETE/SAVE/EXIT MYGTUKAI-->
+      <!--  DELETE/SAVE/EXIT/UPDATE MYGTUKAI-->
       <div class="save flex">
         <div class="left">
           <button @click="closeInvoice" class="red" type="button">
@@ -491,38 +491,38 @@ export default {
 
   .invoice-content {
     position: relative;
-    padding: 56px;
+    padding: 3.5rem;
     max-width: 700px;
     width: 100%;
-    background-color: #1c1331;
+    background-color: #2c4e48;
     color: white;
     box-shadow: 10px 4px 6px -1px rgba(0, 0, 0, 0.2),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     h1 {
-      margin-bottom: 48px;
+      margin-bottom: 4rem;
       color: white;
     }
 
     h3 {
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
       font-size: 18px;
       color: lightslategrey;
     }
 
     h4 {
-      color: #7c5dfa;
+      color: #4e9c73;
       font-size: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 1.5rem;
     }
     /* Bill To / From  style - kad butu vienodi tarpai naudojant gap ir flex:1 */
 
     .bill-to,
     .bill-from {
-      margin-bottom: 48px;
+      margin-bottom: 3rem;
 
       .location-details {
-        gap: 16px;
+        gap: 1rem;
         div {
           flex: 1;
         }
@@ -533,7 +533,7 @@ export default {
 
     .invoice-work {
       .payment {
-        gap: 24px;
+        gap: 1.5rem;
         div {
           flex: 1;
         }
@@ -547,7 +547,7 @@ export default {
 
           .table-heading,
           .table-items {
-            gap: 16px;
+            gap: 1rem;
             font-size: 12px;
 
             .item-name {
@@ -569,7 +569,7 @@ export default {
           }
 
           .table-heading {
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
 
             th {
               text-align: left;
@@ -578,21 +578,21 @@ export default {
 
           .table-items {
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
 
             img {
               position: absolute;
               top: 15px;
               right: 0;
               width: 12px;
-              height: 16px;
+              height: 1rem;
             }
           }
         }
 
         .button {
           color: white;
-          background-color: #2a2040;
+          background-color: #325a53;
           align-items: center;
           justify-content: center;
           width: 100%;
@@ -606,7 +606,7 @@ export default {
   }
 
   .save {
-    margin-top: 16px;
+    margin-top: 1rem;
 
     div {
       flex: 1;
@@ -618,7 +618,7 @@ export default {
   }
 
   .input {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 
   label {
@@ -629,9 +629,9 @@ export default {
   input,
   select {
     width: 100%;
-    background-color: #2a2040;
+    background-color: #325a53;
     color: white;
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 12px 4px;
     border: none;
 

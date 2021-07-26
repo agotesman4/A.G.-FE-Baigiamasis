@@ -93,13 +93,15 @@
           >
             <p>{{ item.itemName }}</p>
             <p>{{ item.qty }}</p>
-            <p>{{ item.price }}</p>
-            <p>{{ item.total }}</p>
+            <p>{{ item.price }} &#8364;</p>
+            <p>{{ item.total }} &#8364;</p>
           </div>
         </div>
         <div class="total flex">
-          <p>Amount Due</p>
-          <p>{{ currentInvoice.invoiceTotal }}</p>
+          <p><strong> Amount Due </strong></p>
+          <p>
+            <strong>{{ currentInvoice.invoiceTotal }} &#8364;</strong>
+          </p>
         </div>
       </div>
     </div>
@@ -169,12 +171,12 @@ export default {
 <style lang="scss" scoped>
 .invoice-view {
   .nav-link {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     align-items: center;
     color: white;
-    font-size: 12px;
+    font-size: 0.75rem;
     img {
-      margin-right: 16px;
+      margin-right: 1rem;
       width: 7px;
       height: 10px;
     }
@@ -182,21 +184,22 @@ export default {
 
   .header,
   .invoice-details {
-    background-color: #2a1a42;
-    border-radius: 20px;
+    background-color: #325a53;
+    border-radius: 1.25;
+    border-radius: 5px;
   }
 
   .header {
     align-items: center;
-    padding: 24px 32px;
-    font-size: 12px;
+    padding: 1.5rem 2rem;
+    font-size: 0.75rem;
 
     .left {
       align-items: center;
 
       span {
         color: white;
-        margin-right: 16px;
+        margin-right: 1rem;
       }
     }
     .right {
@@ -210,8 +213,8 @@ export default {
   }
 
   .invoice-details {
-    padding: 48px;
-    margin-top: 24px;
+    padding: 3rem;
+    margin-top: 1.5rem;
 
     .top {
       div {
@@ -220,23 +223,23 @@ export default {
       }
 
       .left {
-        font-size: 12px;
+        font-size: 0.75rem;
         p:first-child {
-          font-size: 24px;
+          font-size: 1.5rem;
           text-transform: uppercase;
           color: rgb(219, 206, 206);
-          margin-bottom: 8px;
+          margin-bottom: 0.5rem;
         }
 
         p:nth-child(2) {
-          font-size: 16px;
+          font-size: 1rem;
         }
         span {
           color: rgb(115, 110, 110);
         }
       }
       .right {
-        font-size: 12px;
+        font-size: 0.75rem;
         align-items: flex-end;
       }
     }
@@ -244,16 +247,16 @@ export default {
     .middle {
       margin-top: 50px;
       color: rgb(219, 206, 206);
-      gap: 16px;
+      gap: 1rem;
 
       h4 {
-        font-size: 12px;
+        font-size: 0.75rem;
         font-weight: 400;
-        margin-bottom: 12px;
+        margin-bottom: 0.75rem;
       }
 
       p {
-        font-size: 16px;
+        font-size: 1rem;
       }
 
       .bill,
@@ -262,7 +265,7 @@ export default {
       }
       .payment {
         h4:nth-child(3) {
-          margin-top: 32px;
+          margin-top: 2rem;
         }
         p {
           font-weight: 600;
@@ -270,13 +273,13 @@ export default {
       }
       .bill {
         p:nth-child(2) {
-          font-size: 16px;
+          font-size: 1rem;
         }
         p:nth-child(3) {
           margin-top: auto;
         }
         p {
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
 
@@ -289,14 +292,14 @@ export default {
       margin-top: 50px;
 
       .billing-items {
-        padding: 32px;
-        border-radius: 20px 20px 0 0;
-        background-color: #433160;
+        padding: 2rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        background-color: #487870;
 
         .heading {
           color: rgb(219, 206, 206);
-          font-size: 12px;
-          margin-bottom: 32px;
+          font-size: 0.75rem;
+          margin-bottom: 2rem;
 
           p:first-child {
             flex: 3;
@@ -309,7 +312,7 @@ export default {
         }
 
         .item {
-          margin-bottom: 32px;
+          margin-bottom: 2rem;
           font-size: 13px;
           color: white;
 
@@ -330,18 +333,18 @@ export default {
 
       .total {
         color: white;
-        padding: 32px;
-        background-color: rgba(32, 26, 39, 0.7);
+        padding: 2rem;
+        background-color: #20443e;
         align-items: center;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 0.5rem 0.5rem;
 
         p {
           flex: 1;
-          font-size: 12px;
+          font-size: 0.75rem;
         }
 
         p:nth-child(2) {
-          font-size: 28px;
+          font-size: 1.75rem;
           text-align: right;
         }
       }

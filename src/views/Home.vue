@@ -43,7 +43,11 @@
       />
     </div>
     <div v-else class="empty flex flex-column">
-      <img src="@/assets/icon-empty-invoice.svg" alt="empty" />
+      <img
+        src="@/assets/icon-empty-invoice.png"
+        alt="empty"
+        class="emptyinvoice"
+      />
       <h3>There is no Invoices</h3>
       <p>Create a new invoice by clicking New Invoice button</p>
     </div>
@@ -127,7 +131,7 @@ export default {
       }
       .filter {
         position: relative;
-        margin-right: 40px;
+        margin-right: 2.5rem;
         cursor: pointer;
 
         img {
@@ -136,11 +140,11 @@ export default {
           height: 5px;
         }
         .filter-menu {
-          width: 120px;
+          width: 7.5rem;
           position: absolute;
           top: 25px;
           list-style: none;
-          background-color: #231a38;
+          background-color: #487870;
           border-radius: 10px;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
             0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -162,12 +166,12 @@ export default {
       .button {
         padding: 8px 10px;
         background-color: #199a55;
-        border-radius: 40px;
+        border-radius: 2.5rem;
 
         .inner-button {
-          margin-right: 8px;
+          margin-right: 0.5rem;
           border-radius: 50%;
-          padding: 8px;
+          padding: 0.5rem;
           align-items: center;
           justify-content: center;
           background-color: white;
@@ -181,25 +185,26 @@ export default {
   }
 
   .empty {
-    margin-top: 160px;
+    margin-top: 10rem;
     align-items: center;
 
     img {
-      width: 500px;
-      height: 400px;
+      margin: 30px;
+      width: 200px;
+      height: 200px;
     }
 
     h3 {
-      font-size: 20px;
+      font-size: 1.25rem;
       margin-top: 10px;
     }
 
     p {
       text-align: center;
-      max-width: 224px;
-      font-size: 12px;
+      max-width: 14rem;
+      font-size: 0.75rem;
       font-weight: 300;
-      margin-top: 16px;
+      margin-top: 1rem;
     }
   }
 }

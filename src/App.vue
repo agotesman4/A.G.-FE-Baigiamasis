@@ -67,14 +67,14 @@ export default {
 }
 
 .app {
-  background-color: #1c1331;
+  background-color: #2c4e48;
   min-height: 100vh;
   @media (min-width: 900px) {
     flex-direction: row !important;
   }
 
   .app-content {
-    padding: 0 20px;
+    padding: 0 1.25rem;
     flex: 1;
     position: relative;
   }
@@ -85,11 +85,11 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1c1331;
+  background-color: #2c4e48;
   color: white;
 
   p {
-    margin-top: 16px;
+    margin-top: 1rem;
   }
 }
 
@@ -108,11 +108,11 @@ export default {
 button,
 .button {
   cursor: pointer;
-  padding: 16px 24px;
+  padding: 1rem 1.5rem;
   border-radius: 30px;
   border: none;
-  font-size: 12px;
-  margin-right: 8px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
   color: #fff;
 }
 
@@ -153,7 +153,7 @@ button,
   margin: 0 auto;
 
   @media (min-width: 900px) {
-    padding-top: 72px;
+    padding-top: 4.5rem;
   }
 }
 
@@ -170,9 +170,9 @@ button,
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
-  font-size: 12px;
+  font-size: 0.75rem;
   margin-right: 30px;
   align-items: center;
   padding: 8px 30px;

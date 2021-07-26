@@ -47,9 +47,11 @@ export default {
 
   .modal-content {
     border-radius: 20px;
-    padding: 48px 32px;
+    padding: 3rem 2rem;
     max-width: 450px;
-    background-color: #2d1b49;
+    background-color: #487870;
+    box-shadow: 10px 4px 6px -1px rgba(0, 0, 0, 0.2),
+      10px 4px 6px -1px rgba(0, 0, 0, 0.06);
     color: white;
 
     p {
@@ -57,7 +59,7 @@ export default {
     }
 
     .actions {
-      margin-top: 24px;
+      margin-top: 1.5rem;
       button {
         flex: 1;
       }
