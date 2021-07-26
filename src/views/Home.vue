@@ -156,7 +156,7 @@ export default {
             border-radius: 10px;
 
             &:hover {
-              color: #1c1331;
+              color: black;
               background-color: white;
             }
           }

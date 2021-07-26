@@ -116,8 +116,8 @@ button,
   color: #fff;
 }
 
-.dark-purple {
-  background-color: #252945;
+.dark-green {
+  background-color: #064e36;
 }
 
 .red {
