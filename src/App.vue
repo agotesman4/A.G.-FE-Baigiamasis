@@ -57,13 +57,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Baloo Chettan 2", cursive;
 }
 
 .app {
@@ -117,7 +116,7 @@ button,
 }
 
 .dark-green {
-  background-color: #064e36;
+  background-color: #083e2c;
 }
 
 .red {
@@ -134,6 +133,10 @@ button,
 
 .orange {
   background-color: #ff8f00;
+}
+
+.dark-grey {
+  background-color: #6ea2a6;
 }
 
 // utility classes

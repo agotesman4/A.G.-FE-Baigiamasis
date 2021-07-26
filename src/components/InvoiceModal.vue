@@ -222,7 +222,7 @@
             v-if="!editInvoice"
             type="submit"
             @click="saveDraft"
-            class="dark-purple"
+            class="dark-grey"
           >
             Save as Draft
           </button>
