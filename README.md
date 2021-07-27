@@ -30,6 +30,6 @@ Using this app you can:
 
 2. After all modules installed run:
 
-### ### `npm run serve`
+### `npm run serve`
 
 3. ENJOY :)
