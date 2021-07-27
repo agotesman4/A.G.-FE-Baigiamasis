@@ -1,7 +1,6 @@
 <template>
   <div class="home container">
     <!-- HEADER sekcija -->
-
     <div class="header flex">
       <div class="left flex flex-column">
         <h1>Invoices</h1>

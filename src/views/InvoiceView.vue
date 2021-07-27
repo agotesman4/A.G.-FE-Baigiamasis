@@ -3,7 +3,7 @@
     <router-link class="nav-link flex" :to="{ name: 'Home' }">
       <img src="@/assets/icon-arrow-left.svg" alt="leftarrow" /> Go Back
     </router-link>
-    <!-- Header sekcija Invoice -->
+    <!-- Header sekcija Invoice  Edit/Delete/Paid/Pending-->
     <div class="header flex">
       <div class="left flex">
         <span>Status</span>
@@ -32,7 +32,7 @@
           @click="updateStatusToPaid(currentInvoice.docId)"
           class="green"
         >
-          Mark as Pending
+          Mark as Paid
         </button>
         <button
           v-if="currentInvoice.invoiceDraft || currentInvoice.invoicePaid"

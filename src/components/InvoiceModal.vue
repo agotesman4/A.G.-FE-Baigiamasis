@@ -289,6 +289,7 @@ export default {
         this.dateOptions
       );
     }
+    // Invoice Edit dalis
     if (this.editInvoice) {
       const currentInvoice = this.currentInvoiceArray[0];
       this.docId = currentInvoice.docId;
@@ -362,7 +363,7 @@ export default {
     saveDraft() {
       this.invoiceDraft = true;
     },
-    // DB sukurimas kas isiraso
+    // DB sukurimas kas isiraso i item lista
     async uploadInvoice() {
       if (this.invoiceItemList.length <= 0) {
         alert("Please check if you filled Item list correctly");
