@@ -12,7 +12,7 @@
       <div class="bill-from flex flex-column">
         <h4>Bill From</h4>
         <div class="input flex flex-column">
-          <label for="billerStreetAddress">Street Adress</label>
+          <label for="billerStreetAddress">Street Address</label>
           <input
             v-model="billerStreetAddress"
             type="text"
