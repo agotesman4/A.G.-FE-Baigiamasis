@@ -33,3 +33,5 @@ Using this app you can:
 ### `npm run serve`
 
 3. ENJOY :)
+
+<h1>© A.G. 2021</h1>
